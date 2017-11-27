@@ -1,5 +1,6 @@
 package com.github.recyclerviewpager;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ public class TextPagerAdapter extends RecyclerView.Adapter<TextPagerAdapter.Text
 
     @Override
     public void onBindViewHolder(TextPagerVH holder, int position) {
-        holder.textView.setText(list.get(position));
+        holder.itemView.setBackgroundColor(Color.parseColor(list.get(position%list.size())));
     }
 
     @Override
@@ -38,10 +39,8 @@ public class TextPagerAdapter extends RecyclerView.Adapter<TextPagerAdapter.Text
     }
 
     static class TextPagerVH extends RecyclerView.ViewHolder{
-        private TextView textView;
         public TextPagerVH(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.page_text);
         }
     }
 }

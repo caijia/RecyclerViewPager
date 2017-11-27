@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.github.recyclerviewpager.MainActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+        <com.caijia.widget.looperrecyclerview.LooperPageRecyclerView
+            android:id="@+id/pager_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="180dp" />
+
+        <com.caijia.widget.looperrecyclerview.RecyclerViewCircleIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            app:rviNormalColor="#ffffff"
+            app:rviRadius="3dp"
+            app:rviSelectedColor="#998888"
+            app:rviSpace="8dp" />
+
+    </FrameLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="scrollNext"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="144dp"/>
-
-    <com.github.library.LooperPageRecyclerView
-        android:id="@+id/pager_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:onClick="changeAdapter"
+        android:text="改变Adapter数量" />
 
 </LinearLayout>

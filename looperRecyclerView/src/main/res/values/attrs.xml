@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LooperPageRecyclerView">
+        <attr name="prSpeedTimes" format="integer" />
+        <attr name="prInterval" format="integer" />
+        <attr name="prIsLooper" format="boolean" />
+        <attr name="prIsAutoScroll" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="RecyclerViewCircleIndicator">
+        <attr name="rviRadius" format="dimension" />
+        <attr name="rviSelectedColor" format="color" />
+        <attr name="rviNormalColor" format="color" />
+        <attr name="rviSpace" format="dimension" />
+    </declare-styleable>
+</resources>

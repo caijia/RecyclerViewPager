@@ -3,46 +3,48 @@ package com.github.recyclerviewpager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.github.library.LooperPageRecyclerView;
+import com.caijia.widget.looperrecyclerview.LooperPageRecyclerView;
+import com.caijia.widget.looperrecyclerview.RecyclerViewCircleIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private LinearLayoutManager layoutManager;
-
     private LooperPageRecyclerView looperPageRecyclerView;
+    private RecyclerViewCircleIndicator indicator;
+    private TextPagerAdapter adapter;
+    private List<String> colorStrings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(new TextAdapter(getData()));
-
-        looperPageRecyclerView = (LooperPageRecyclerView) findViewById(R.id.pager_recycler_view);
-        looperPageRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        looperPageRecyclerView.setAdapter(new TextPagerAdapter(getData()));
+        indicator = findViewById(R.id.indicator);
+        looperPageRecyclerView = findViewById(R.id.pager_recycler_view);
+        looperPageRecyclerView.setLayoutManager(new LinearLayoutManager(this,
+                LinearLayoutManager.HORIZONTAL, false));
+        colorStrings = getData();
+        adapter = new TextPagerAdapter(colorStrings);
+        looperPageRecyclerView.setAdapter(adapter);
+        indicator.setupWithRecyclerView(looperPageRecyclerView);
     }
 
     private List<String> getData() {
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add("Item position = " + (i + 1));
-        }
+        list.add("#339933");
+        list.add("#ff00ff");
+        list.add("#ff5566");
+        list.add("#ff0000");
         return list;
     }
 
-    public void scrollNext(View view) {
-        int position = layoutManager.findLastVisibleItemPosition();
-        recyclerView.smoothScrollToPosition(++position);
+    public void changeAdapter(View view) {
+        if (colorStrings.size() < 5) {
+            colorStrings.add("#333333");
+            adapter.notifyDataSetChanged();
+        }
     }
 }
