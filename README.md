@@ -73,3 +73,32 @@ looperPageRecyclerView.setLayoutManager(new LinearLayoutManager(this,
 indicator.setupWithRecyclerView(looperPageRecyclerView);
 ```
 
+# 自定义属性值
+1. LooperPageRecyclerView
+
+属性 | 含义
+---|---
+prIsAutoScroll | 是否可以自动滚动
+prIsLooper | 是否可以无限循坏
+prInterval | 多久时间自动滚动一次
+prSpeedTimes | 滚动的速度
+
+
+2. RecyclerViewCircleIndicator
+
+属性 | 含义
+---|---
+rviNormalColor | 指示器圆点的正常颜色
+rviRadius | 圆点半径
+rviSelectedColor | 指示器圆点的选中
+rviSpace | 两个圆点的距离
+
+# Note
+当打开 prIsLooper 这个属性时，使用Adapter的position时需要 % 
+```
+@Override
+    public void onBindViewHolder(TextPagerVH holder, int position) {
+        holder.itemView.setBackgroundColor(Color.parseColor(list.get(position%list.size())));
+    }
+```
+
