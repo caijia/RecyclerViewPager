@@ -13,8 +13,6 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.caijia.widget.R;
-
 /**
  * RecyclerView ViewPager模式时的指示器
  * Created by cai.jia on 2017/4/26 0026

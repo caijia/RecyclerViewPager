@@ -7,8 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 
-import com.caijia.widget.R;
-
 import java.util.List;
 
 /**
